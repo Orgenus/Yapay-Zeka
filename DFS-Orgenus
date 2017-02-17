@@ -1,0 +1,37 @@
+(define myTree (list 53 (list 23 (list 11 '() '()) (list 4 '() '()) ) (list 17 '() '())))
+
+
+(define (node agac)( car agac))
+(define (left agac)( car (cdr agac)))
+(define (right agac)( car (cdr (cdr agac))))
+
+(define (esitmi a b c d)(
+
+                         cond [(= a b) b]
+                              [(= a c) c]
+                              [(= a d) d]
+                              [else 0]
+
+                         ))
+; Hocam counter olmadı :(
+(define (DFS agac sayi n)(
+                       
+                        if(empty? agac)
+                          0
+                          (
+
+                           cond [(= sayi (esitmi sayi
+                                  (node agac)
+                                  (DFS (left agac) sayi (+ n 1))
+                                  (DFS (right agac) sayi (+ n 1)))) n]
+                                [else 0]
+                           
+                             
+                           )
+                        
+
+                        ))
+
+
+(DFS myTree 24 0)
+(DFS myTree 4 0)
