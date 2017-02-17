@@ -1,0 +1,33 @@
+(define myTree (list 53 (list 23 (list 11 '() '()) (list 4 '() '()) ) (list 17 '() '())))
+
+
+(define (node agac)( car agac))
+(define (left agac)( car (cdr agac)))
+(define (right agac)( car (cdr (cdr agac))))
+
+(define (esitmi a b c d)(
+
+                         cond [(= a b) b]
+                              [(= a c) c]
+                              [(= a d) d]
+                              [else 0]
+
+                         ))
+
+
+
+(define (BFS agac sayi)(
+                        if(empty? agac)
+                          0
+                          (
+                           esitmi sayi
+                                  (node agac)
+                                  (BFS (left agac) sayi)
+                                  (BFS (right agac) sayi)
+                           )
+                        
+
+                        ))
+
+(BFS myTree 24)
+(BFS myTree 4)
